@@ -1,0 +1,255 @@
+[
+  {
+    "name": "convert undefined",
+    "exp": {},
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "convert null",
+    "exp": {
+      "convert": null
+    },
+    "expect": "must be a string or object\n.convert"
+  },
+  {
+    "name": "convert empty",
+    "exp": {
+      "convert": ""
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "convert int",
+    "exp": {
+      "convert": "atoi"
+    },
+    "input": "1",
+    "expect": 1
+  },
+  {
+    "name": "convert float",
+    "exp": {
+      "convert": "atof"
+    },
+    "input": "1.1",
+    "expect": 1.1
+  },
+  {
+    "name": "convert true",
+    "exp": {
+      "convert": "true"
+    },
+    "input": "abc",
+    "expect": true
+  },
+  {
+    "name": "convert missing",
+    "exp": {
+      "convert": "missing"
+    },
+    "input": "a",
+    "expect": "unsupported convert missing\n.convert"
+  },
+  {
+    "name": "convert error",
+    "exp": {
+      "convert": "error"
+    },
+    "input": "a",
+    "expect": "convert error\n.convert"
+  },
+  {
+    "name": "convert int error",
+    "exp": {
+      "convert": "atoi"
+    },
+    "input": "a",
+    "expect": "strconv.Atoi: parsing \"a\": invalid syntax\n.convert"
+  },
+  {
+    "name": "convert name missing",
+    "exp": {
+      "convert": {}
+    },
+    "expect": "missing property name\n.convert"
+  },
+  {
+    "name": "convert name empty",
+    "exp": {
+      "convert": {
+        "name": ""
+      }
+    },
+    "expect": "must not be empty\n.convert.name"
+  },
+  {
+    "name": "convert name invalid",
+    "exp": {
+      "convert": {
+        "name": 1
+      }
+    },
+    "expect": "must be a string\n.convert.name"
+  },
+  {
+    "name": "convert name unsupported",
+    "exp": {
+      "convert": {
+        "name": "not"
+      }
+    },
+    "expect": "unsupported convert not\n.convert.name"
+  },
+  {
+    "name": "convert time layout missing",
+    "exp": {
+      "convert": {
+        "name": "timeUnix"
+      }
+    },
+    "expect": "missing property layout\n.convert"
+  },
+  {
+    "name": "convert time layout empty",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": ""
+      }
+    },
+    "expect": "must not be empty\n.convert.layout"
+  },
+  {
+    "name": "convert time layout invalid",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": 1
+      }
+    },
+    "expect": "must be a string or array\n.convert.layout"
+  },
+  {
+    "name": "convert time layout array empty",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": []
+      }
+    },
+    "expect": "must not be empty\n.convert.layout"
+  },
+  {
+    "name": "convert time layout array one empty",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": [""]
+      }
+    },
+    "expect": "must not be empty\n.convert.layout[0]"
+  },
+  {
+    "name": "convert time layout array invalid",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": [1]
+      }
+    },
+    "expect": "must be a string\n.convert.layout[0]"
+  },
+  {
+    "name": "convert time location invalid",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": "2006",
+        "location": true
+      }
+    },
+    "expect": "must be a string, integer, or null\n.convert.location"
+  },
+  {
+    "name": "convert timeUnix location float",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": "2006",
+        "location": 1.1
+      }
+    },
+    "expect": "must be a string, integer, or null\n.convert.location"
+  },
+  {
+    "name": "convert time location unsupported",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": "2006",
+        "location": "abc"
+      }
+    },
+    "expect": "unknown time zone abc\n.convert.location"
+  },
+  {
+    "name": "convert timeUnix layout ok",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": "2006"
+      }
+    },
+    "input": "2007",
+    "expect": 1167609600
+  },
+  {
+    "name": "convert timeUnixMilli layout ok",
+    "exp": {
+      "convert": {
+        "name": "timeUnixMilli",
+        "layout": ["01", "2006"],
+        "location": null
+      }
+    },
+    "input": "2007",
+    "expect": 1167609600000
+  },
+  {
+    "name": "convert timeUnix location offset ok",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": "2006",
+        "location": 25200
+      }
+    },
+    "input": "2007",
+    "expect": 1167584400
+  },
+  {
+    "name": "convert timeUnix location timezone ok",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": "2006",
+        "location": "Asia/Ho_Chi_Minh"
+      }
+    },
+    "input": "2007",
+    "expect": 1167584400
+  },
+  {
+    "name": "convert timeUnix unable to parse",
+    "exp": {
+      "convert": {
+        "name": "timeUnix",
+        "layout": "01"
+      }
+    },
+    "input": "2007",
+    "expect": "unable parsing time \"2007\"\n.convert"
+  }
+]

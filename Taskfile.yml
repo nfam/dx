@@ -1,0 +1,24 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task: lint
+      - task: test
+
+  lint:
+    cmds:
+      - golangci-lint run .
+    sources:
+      - ./*.go
+
+  test:
+    cmds:
+      - go test -coverprofile coverage.txt .
+      - go tool cover -html coverage.txt -o coverage.html
+    sources:
+      - ./*.go
+      - testdata/*.json
+      - go.mod

@@ -1,0 +1,166 @@
+[
+  {
+    "name": "slice undefined",
+    "exp": {},
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "slice null",
+    "exp": {
+      "slice": null
+    },
+    "expect": "must be an object or array\n.slice"
+  },
+  {
+    "name": "slice empty",
+    "exp": {
+      "slice": {}
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "slice array empty",
+    "exp": {
+      "slice": []
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "slice invalid",
+    "exp": {
+      "slice": 1
+    },
+    "expect": "must be an object or array\n.slice"
+  },
+  {
+    "name": "slice object invalid",
+    "exp": {
+      "slice": {
+        "after": 1
+      }
+    },
+    "expect": "must be a string or array\n.slice.after"
+  },
+  {
+    "name": "slice array invalid",
+    "exp": {
+      "slice": [1]
+    },
+    "expect": "must be an object or array\n.slice[0]"
+  },
+  {
+    "name": "slice array object invalid",
+    "exp": {
+      "slice": [
+        {
+          "after": 1
+        }
+      ]
+    },
+    "expect": "must be a string or array\n.slice[0].after"
+  },
+  {
+    "name": "slice array array invalid",
+    "exp": {
+      "slice": [[1]]
+    },
+    "expect": "must be an object\n.slice[0][0]"
+  },
+  {
+    "name": "slice array array object invalid",
+    "exp": {
+      "slice": [
+        [
+          {
+            "after": 1
+          }
+        ]
+      ]
+    },
+    "expect": "must be a string or array\n.slice[0][0].after"
+  },
+  {
+    "name": "slice comment",
+    "exp": {
+      "slice": {
+        "//": "comment"
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "slice ok",
+    "exp": {
+      "slice": {
+        "after": "a"
+      }
+    },
+    "input": "abc",
+    "expect": "bc"
+  },
+  {
+    "name": "slice array ok",
+    "exp": {
+      "slice": [
+        {
+          "after": "a"
+        },
+        {
+          "after": "b"
+        }
+      ]
+    },
+    "input": "abc",
+    "expect": "c"
+  },
+  {
+    "name": "slice array array ok",
+    "exp": {
+      "slice": [
+        [
+          {
+            "after": "d"
+          },
+          {
+            "after": "b"
+          }
+        ]
+      ]
+    },
+    "input": "abc",
+    "expect": "c"
+  },
+  {
+    "name": "slice unmatch",
+    "exp": {
+      "slice": {
+        "after": "d"
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.slice.after"
+  },
+  {
+    "name": "slice array unmatch",
+    "exp": {
+      "slice": {
+        "after": ["a", "d"]
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.slice.after[1]"
+  },
+  {
+    "name": "slice unwanted",
+    "exp": {
+      "slice": {
+        "x": 1
+      }
+    },
+    "expect": "unknown property x\n.slice"
+  }
+]

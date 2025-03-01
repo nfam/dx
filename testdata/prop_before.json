@@ -1,0 +1,105 @@
+[
+  {
+    "name": "before undefined",
+    "exp": { "slice": {} },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "before empty",
+    "exp": {
+      "slice": {
+        "before": ""
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "before array empty",
+    "exp": {
+      "slice": {
+        "before": [""]
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "before invalid",
+    "exp": {
+      "slice": {
+        "before": 1
+      }
+    },
+    "expect": "must be a string or array\n.slice.before"
+  },
+  {
+    "name": "before array invalid",
+    "exp": {
+      "slice": {
+        "before": [1]
+      }
+    },
+    "expect": "must be a string or array\n.slice.before[0]"
+  },
+  {
+    "name": "before array array invalid",
+    "exp": {
+      "slice": {
+        "before": [[1]]
+      }
+    },
+    "expect": "must be a string\n.slice.before[0][0]"
+  },
+  {
+    "name": "before ok",
+    "exp": {
+      "slice": {
+        "before": "c"
+      }
+    },
+    "input": "abc",
+    "expect": "ab"
+  },
+  {
+    "name": "before array ok",
+    "exp": {
+      "slice": {
+        "before": ["c", "b"]
+      }
+    },
+    "input": "abc",
+    "expect": "a"
+  },
+  {
+    "name": "before array array ok",
+    "exp": {
+      "slice": {
+        "before": ["c", ["x", "b"]]
+      }
+    },
+    "input": "abc",
+    "expect": "a"
+  },
+  {
+    "name": "before unmatch",
+    "exp": {
+      "slice": {
+        "before": "d"
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.slice.before"
+  },
+  {
+    "name": "before array unmatch",
+    "exp": {
+      "slice": {
+        "before": ["c", "d"]
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.slice.before[1]"
+  }
+]

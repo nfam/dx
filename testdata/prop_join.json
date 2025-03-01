@@ -1,0 +1,188 @@
+[
+  {
+    "name": "join undefined",
+    "exp": {
+      "slice": {}
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "join null",
+    "exp": {
+      "slice": {
+        "join": null
+      }
+    },
+    "expect": "must be an array\n.slice.join"
+  },
+  {
+    "name": "join empty",
+    "exp": {
+      "slice": {
+        "join": []
+      }
+    },
+    "input": "abc",
+    "expect": ""
+  },
+  {
+    "name": "join invalid",
+    "exp": {
+      "slice": {
+        "join": 1
+      }
+    },
+    "expect": "must be an array\n.slice.join"
+  },
+  {
+    "name": "join array invalid",
+    "exp": {
+      "slice": {
+        "join": [1]
+      }
+    },
+    "expect": "must be a string, object, or array\n.slice.join[0]"
+  },
+  {
+    "name": "join array has invalid",
+    "exp": {
+      "slice": {
+        "join": [{ "has": 1 }]
+      }
+    },
+    "expect": "must be a string or array\n.slice.join[0].has"
+  },
+  {
+    "name": "join array slice invalid",
+    "exp": {
+      "slice": {
+        "join": [{ "slice": 1 }]
+      }
+    },
+    "expect": "must be an object or array\n.slice.join[0].slice"
+  },
+  {
+    "name": "join array value invalid",
+    "exp": {
+      "slice": {
+        "join": [{ "value": 1 }]
+      }
+    },
+    "expect": "must be a string\n.slice.join[0].value"
+  },
+  {
+    "name": "join array array invalid",
+    "exp": {
+      "slice": {
+        "join": [[1]]
+      }
+    },
+    "expect": "must be an object\n.slice.join[0][0]"
+  },
+  {
+    "name": "join array array has",
+    "exp": {
+      "slice": {
+        "join": [[{ "has": 1 }]]
+      }
+    },
+    "expect": "must be a string or array\n.slice.join[0][0].has"
+  },
+  {
+    "name": "slice comment",
+    "exp": {
+      "slice": {
+        "join": [
+          {
+            "//": "comment"
+          }
+        ]
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "join value ok",
+    "exp": {
+      "slice": {
+        "join": [
+          "x",
+          { "value": "y" },
+          [],
+          [
+            { "has": "d", "value": "a" },
+            { "has": "a", "value": "z" }
+          ]
+        ]
+      }
+    },
+    "input": "abc",
+    "expect": "xyz"
+  },
+  {
+    "name": "join slice ok",
+    "exp": {
+      "slice": {
+        "join": [
+          { "slice": { "after": "ab" } },
+          "-",
+          { "slice": { "before": "b" } }
+        ]
+      }
+    },
+    "input": "abc",
+    "expect": "c-a"
+  },
+  {
+    "name": "join array slice ok",
+    "exp": {
+      "slice": {
+        "join": [
+          { "slice": { "after": "ab" } },
+          "-",
+          [{ "slice": { "before": "b" } }]
+        ]
+      }
+    },
+    "input": "abc",
+    "expect": "c-a"
+  },
+  {
+    "name": "join unmatch",
+    "exp": {
+      "slice": {
+        "join": [
+          { "slice": { "after": "ab" } },
+          "-",
+          { "slice": { "before": "d" } }
+        ]
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.slice.join[2].slice.before"
+  },
+  {
+    "name": "join func missing",
+    "exp": {
+      "slice": {
+        "join": [{ "slice": { "func": "missing" } }]
+      }
+    },
+    "expect": "unsupported func missing\n.slice.join[0].slice.func"
+  },
+  {
+    "name": "join unwanted",
+    "exp": {
+      "slice": {
+        "join": [
+          {
+            "x": 1
+          }
+        ]
+      }
+    },
+    "expect": "unknown property x\n.slice.join[0]"
+  }
+]

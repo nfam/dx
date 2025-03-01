@@ -1,0 +1,163 @@
+[
+  {
+    "name": "func undefined",
+    "exp": { "slice": {} },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "func null",
+    "exp": {
+      "slice": {
+        "func": null
+      }
+    },
+    "expect": "must be a string or array\n.slice.func"
+  },
+  {
+    "name": "func empty",
+    "exp": {
+      "slice": {
+        "func": ""
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "func array empty",
+    "exp": {
+      "slice": {
+        "func": [""]
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "func invalid",
+    "exp": {
+      "slice": {
+        "func": 1
+      }
+    },
+    "expect": "must be a string or array\n.slice.func"
+  },
+  {
+    "name": "func array invalid",
+    "exp": {
+      "slice": {
+        "func": [1]
+      }
+    },
+    "expect": "must be a string\n.slice.func[0]"
+  },
+  {
+    "name": "func ok",
+    "exp": {
+      "slice": {
+        "func": "trim"
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "func custom",
+    "exp": {
+      "slice": {
+        "func": "found"
+      }
+    },
+    "input": "abc",
+    "expect": "found"
+  },
+  {
+    "name": "func array ok",
+    "exp": {
+      "slice": {
+        "func": ["trim", "found"]
+      }
+    },
+    "input": "abc",
+    "expect": "found"
+  },
+  {
+    "name": "func missing",
+    "exp": {
+      "slice": {
+        "func": "missing"
+      }
+    },
+    "expect": "unsupported func missing\n.slice.func"
+  },
+  {
+    "name": "func array missing",
+    "exp": {
+      "slice": {
+        "func": ["trim", "missing"]
+      }
+    },
+    "expect": "unsupported func missing\n.slice.func[1]"
+  },
+  {
+    "name": "func error",
+    "exp": {
+      "slice": {
+        "func": "error"
+      }
+    },
+    "input": "abc",
+    "expect": "func error\n.slice.func"
+  },
+  {
+    "name": "func trim",
+    "exp": {
+      "slice": {
+        "func": "trim"
+      }
+    },
+    "input": " abc \n ",
+    "expect": "abc"
+  },
+  {
+    "name": "func trimPrefix",
+    "exp": {
+      "slice": {
+        "func": "trimPrefix:ab"
+      }
+    },
+    "input": "abc ",
+    "expect": "c "
+  },
+  {
+    "name": "func trimSuffix",
+    "exp": {
+      "slice": {
+        "func": "trimSuffix:c"
+      }
+    },
+    "input": "abc",
+    "expect": "ab"
+  },
+  {
+    "name": "func trimLeft",
+    "exp": {
+      "slice": {
+        "func": "trimLeft:a "
+      }
+    },
+    "input": " aa bc",
+    "expect": "bc"
+  },
+  {
+    "name": "func trimRight",
+    "exp": {
+      "slice": {
+        "func": "trimRight: c"
+      }
+    },
+    "input": "ab cc ",
+    "expect": "ab"
+  }
+]

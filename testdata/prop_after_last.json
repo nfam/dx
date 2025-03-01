@@ -1,0 +1,105 @@
+[
+  {
+    "name": "afterLast undefined",
+    "exp": { "slice": {} },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "afterLast empty",
+    "exp": {
+      "slice": {
+        "afterLast": ""
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "afterLast array empty",
+    "exp": {
+      "slice": {
+        "afterLast": [""]
+      }
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "afterLast invalid",
+    "exp": {
+      "slice": {
+        "afterLast": 1
+      }
+    },
+    "expect": "must be a string or array\n.slice.afterLast"
+  },
+  {
+    "name": "afterLast array invalid",
+    "exp": {
+      "slice": {
+        "afterLast": [1]
+      }
+    },
+    "expect": "must be a string or array\n.slice.afterLast[0]"
+  },
+  {
+    "name": "afterLast array array invalid",
+    "exp": {
+      "slice": {
+        "afterLast": [[1]]
+      }
+    },
+    "expect": "must be a string\n.slice.afterLast[0][0]"
+  },
+  {
+    "name": "afterLast ok",
+    "exp": {
+      "slice": {
+        "afterLast": "a"
+      }
+    },
+    "input": "xaabc",
+    "expect": "bc"
+  },
+  {
+    "name": "afterLast array ok",
+    "exp": {
+      "slice": {
+        "afterLast": ["a", "b"]
+      }
+    },
+    "input": "ababc",
+    "expect": "c"
+  },
+  {
+    "name": "afterLast array array ok",
+    "exp": {
+      "slice": {
+        "afterLast": ["a", ["x", "b"]]
+      }
+    },
+    "input": "ababc",
+    "expect": "c"
+  },
+  {
+    "name": "afterLast unmatch",
+    "exp": {
+      "slice": {
+        "afterLast": "d"
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.slice.afterLast"
+  },
+  {
+    "name": "afterLast array unmatch",
+    "exp": {
+      "slice": {
+        "afterLast": ["a", "d"]
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.slice.afterLast[1]"
+  }
+]

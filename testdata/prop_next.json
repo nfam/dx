@@ -1,0 +1,138 @@
+[
+  {
+    "name": "next undefined",
+    "exp": {},
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "next null",
+    "exp": {
+      "next": null
+    },
+    "expect": "must be an object or array\n.next"
+  },
+  {
+    "name": "next empty",
+    "exp": {
+      "next": {}
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "next array empty",
+    "exp": {
+      "next": []
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "next invalid",
+    "exp": {
+      "next": 1
+    },
+    "expect": "must be an object or array\n.next"
+  },
+  {
+    "name": "next object invalid",
+    "exp": {
+      "next": {
+        "has": 1
+      }
+    },
+    "expect": "must be a string or array\n.next.has"
+  },
+  {
+    "name": "next array invalid",
+    "exp": {
+      "next": [1]
+    },
+    "expect": "must be an object\n.next[0]"
+  },
+  {
+    "name": "next array object invalid",
+    "exp": {
+      "next": [
+        {
+          "has": 1
+        }
+      ]
+    },
+    "expect": "must be a string or array\n.next[0].has"
+  },
+  {
+    "name": "next ok",
+    "exp": {
+      "next": {
+        "slice": {
+          "after": "a"
+        }
+      }
+    },
+    "input": "abc",
+    "expect": "bc"
+  },
+  {
+    "name": "next array ok",
+    "exp": {
+      "next": [
+        {
+          "slice": {
+            "after": "d"
+          }
+        },
+        {
+          "slice": {
+            "after": "b"
+          }
+        }
+      ]
+    },
+    "input": "abc",
+    "expect": "c"
+  },
+  {
+    "name": "next unmatch",
+    "exp": {
+      "next": {
+        "slice": {
+          "after": "d"
+        }
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.next.slice.after"
+  },
+  {
+    "name": "next array unmatch",
+    "exp": {
+      "next": [
+        {
+          "slice": {
+            "after": "d"
+          }
+        },
+        {
+          "slice": {
+            "after": "e"
+          }
+        }
+      ]
+    },
+    "input": "abc",
+    "expect": "not found\n.next[0].slice.after\nnot found\n.next[1].slice.after"
+  },
+  {
+    "name": "next func missing",
+    "exp": {
+      "next": {
+        "slice": {
+          "func": "missing"
+        }
+      }
+    },
+    "expect": "unsupported func missing\n.next.slice.func"
+  }
+]

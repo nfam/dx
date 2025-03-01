@@ -1,0 +1,123 @@
+[
+  {
+    "name": "dict undefined",
+    "exp": {},
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "dict null",
+    "exp": {
+      "dict": null
+    },
+    "expect": "must be an object\n.dict"
+  },
+  {
+    "name": "dict empty",
+    "exp": {
+      "dict": {}
+    },
+    "input": "abc",
+    "expect": {}
+  },
+  {
+    "name": "dict invalid",
+    "exp": {
+      "dict": 1
+    },
+    "expect": "must be an object\n.dict"
+  },
+  {
+    "name": "dict member invalid",
+    "exp": {
+      "dict": {
+        "name0": 1
+      }
+    },
+    "expect": "must be an object or array\n.dict[\"name0\"]"
+  },
+  {
+    "name": "dict member null",
+    "exp": {
+      "dict": {
+        "name0": null
+      }
+    },
+    "expect": "must be an object or array\n.dict[\"name0\"]"
+  },
+  {
+    "name": "dict member object invalid",
+    "exp": {
+      "dict": {
+        "name0": {
+          "has": 1
+        }
+      }
+    },
+    "expect": "must be a string or array\n.dict[\"name0\"].has"
+  },
+  {
+    "name": "dict member array invalid",
+    "exp": {
+      "dict": {
+        "name0": [1]
+      }
+    },
+    "expect": "must be an object or null\n.dict[\"name0\"][0]"
+  },
+  {
+    "name": "dict member array object invalid",
+    "exp": {
+      "dict": {
+        "name0": [
+          {
+            "has": 1
+          }
+        ]
+      }
+    },
+    "expect": "must be a string or array\n.dict[\"name0\"][0].has"
+  },
+  {
+    "name": "dict ok",
+    "exp": {
+      "dict": {
+        "name0": [
+          {
+            "slice": {
+              "after": "ab"
+            }
+          }
+        ],
+        "name1": [null]
+      }
+    },
+    "input": "abcd",
+    "expect": { "name0": "cd" }
+  },
+  {
+    "name": "dict func missing",
+    "exp": {
+      "dict": {
+        "name0": {
+          "slice": {
+            "func": "missing"
+          }
+        }
+      }
+    },
+    "expect": "unsupported func missing\n.dict[\"name0\"].slice.func"
+  },
+  {
+    "name": "dict unmatch",
+    "exp": {
+      "dict": {
+        "name0": {
+          "has": "missing"
+        }
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.dict[\"name0\"].has"
+  }
+]

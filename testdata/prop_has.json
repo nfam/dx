@@ -1,0 +1,92 @@
+[
+  {
+    "name": "has undefined",
+    "exp": {},
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "has null",
+    "exp": {
+      "has": null
+    },
+    "expect": "must be a string or array\n.has"
+  },
+  {
+    "name": "has empty",
+    "exp": {
+      "has": ""
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "has array empty",
+    "exp": {
+      "has": [""]
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "has invalid",
+    "exp": {
+      "has": 1
+    },
+    "expect": "must be a string or array\n.has"
+  },
+  {
+    "name": "has array invalid",
+    "exp": {
+      "has": [1]
+    },
+    "expect": "must be a string or array\n.has[0]"
+  },
+  {
+    "name": "has array array invalid",
+    "exp": {
+      "has": [[1]]
+    },
+    "expect": "must be a string\n.has[0][0]"
+  },
+  {
+    "name": "has ok",
+    "exp": {
+      "has": "a"
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "has array ok",
+    "exp": {
+      "has": ["a", "b"]
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "has array ok",
+    "exp": {
+      "has": ["a", ["x", "b"]]
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "has unmatch",
+    "exp": {
+      "has": "d"
+    },
+    "input": "abc",
+    "expect": "not found\n.has"
+  },
+  {
+    "name": "has array unmatch",
+    "exp": {
+      "has": ["a", "d"]
+    },
+    "input": "abc",
+    "expect": "not found\n.has[1]"
+  }
+]

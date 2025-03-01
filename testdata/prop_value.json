@@ -1,0 +1,63 @@
+[
+  {
+    "name": "value undefined",
+    "exp": {},
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "value null",
+    "exp": {
+      "value": null
+    },
+    "expect": null
+  },
+  {
+    "name": "value string",
+    "exp": {
+      "value": "1"
+    },
+    "input": "abc",
+    "expect": "1"
+  },
+  {
+    "name": "value bool",
+    "exp": {
+      "value": true
+    },
+    "input": "abc",
+    "expect": true
+  },
+  {
+    "name": "value int",
+    "exp": {
+      "value": 1
+    },
+    "input": "abc",
+    "expect": 1
+  },
+  {
+    "name": "value float",
+    "exp": {
+      "value": 1.1
+    },
+    "input": "abc",
+    "expect": 1.1
+  },
+  {
+    "name": "value array",
+    "exp": {
+      "value": [1]
+    },
+    "input": "abc",
+    "expect": [1]
+  },
+  {
+    "name": "value dict",
+    "exp": {
+      "value": { "k": 1 }
+    },
+    "input": "abc",
+    "expect": { "k": 1 }
+  }
+]

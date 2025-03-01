@@ -1,0 +1,128 @@
+[
+  {
+    "name": "item undefined",
+    "exp": {
+      "list": {}
+    },
+    "expect": [""]
+  },
+  {
+    "name": "item null",
+    "exp": {
+      "list": {
+        "item": null
+      }
+    },
+    "expect": "must be an object or array\n.list.item"
+  },
+  {
+    "name": "item empty",
+    "exp": {
+      "list": {
+        "item": {}
+      }
+    },
+    "input": "abc",
+    "expect": ["abc"]
+  },
+  {
+    "name": "item array empty",
+    "exp": {
+      "list": {
+        "item": []
+      }
+    },
+    "input": "abc",
+    "expect": ["abc"]
+  },
+  {
+    "name": "item invalid",
+    "exp": {
+      "list": {
+        "item": 1
+      }
+    },
+    "expect": "must be an object or array\n.list.item"
+  },
+  {
+    "name": "item object invalid",
+    "exp": {
+      "list": {
+        "item": { "has": 1 }
+      }
+    },
+    "expect": "must be a string or array\n.list.item.has"
+  },
+  {
+    "name": "item array invalid",
+    "exp": {
+      "list": {
+        "item": [1]
+      }
+    },
+    "expect": "must be an object\n.list.item[0]"
+  },
+  {
+    "name": "item array object invalid",
+    "exp": {
+      "list": {
+        "item": [{ "has": 1 }]
+      }
+    },
+    "expect": "must be a string or array\n.list.item[0].has"
+  },
+  {
+    "name": "item ok",
+    "exp": {
+      "list": {
+        "item": { "value": "x" }
+      }
+    },
+    "input": "abc",
+    "expect": ["x"]
+  },
+  {
+    "name": "item array ok",
+    "exp": {
+      "list": {
+        "item": [{ "slice": { "after": "x" } }, { "slice": { "after": "b" } }]
+      }
+    },
+    "input": "abc",
+    "expect": ["c"]
+  },
+  {
+    "name": "next array unmatch",
+    "exp": {
+      "list": {
+        "item": [
+          {
+            "slice": {
+              "after": "d"
+            }
+          },
+          {
+            "slice": {
+              "after": "e"
+            }
+          }
+        ]
+      }
+    },
+    "input": "abc",
+    "expect": "not found\n.list.item[0].slice.after\nnot found\n.list.item[1].slice.after"
+  },
+  {
+    "name": "next func missing",
+    "exp": {
+      "list": {
+        "item": {
+          "slice": {
+            "func": "missing"
+          }
+        }
+      }
+    },
+    "expect": "unsupported func missing\n.list.item.slice.func"
+  }
+]

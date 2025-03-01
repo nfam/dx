@@ -1,0 +1,103 @@
+[
+  {
+    "name": "exp null",
+    "exp": null,
+    "expect": "must be an object"
+  },
+  {
+    "name": "exp comment",
+    "exp": {
+      "//": "comment"
+    },
+    "input": "abc",
+    "expect": "abc"
+  },
+  {
+    "name": "exp unknown",
+    "exp": {
+      "x": 1
+    },
+    "expect": "unknown property x"
+  },
+  {
+    "name": "exp convert unwanted for dict",
+    "exp": {
+      "dict": {},
+      "convert": ""
+    },
+    "expect": "unwanted property convert as dict provided"
+  },
+  {
+    "name": "exp convert unwanted for list",
+    "exp": {
+      "list": {},
+      "convert": ""
+    },
+    "expect": "unwanted property convert as list provided"
+  },
+  {
+    "name": "exp convert unwanted for value",
+    "exp": {
+      "value": "",
+      "convert": ""
+    },
+    "expect": "unwanted property convert as value provided"
+  },
+  {
+    "name": "exp convert unwanted for next",
+    "exp": {
+      "next": {},
+      "convert": ""
+    },
+    "expect": "unwanted property convert as next provided"
+  },
+  {
+    "name": "exp dict unwanted for list",
+    "exp": {
+      "list": {},
+      "dict": {}
+    },
+    "expect": "unwanted property dict as list provided"
+  },
+  {
+    "name": "exp dict unwanted for value",
+    "exp": {
+      "value": "",
+      "dict": {}
+    },
+    "expect": "unwanted property dict as value provided"
+  },
+  {
+    "name": "exp dict unwanted for next",
+    "exp": {
+      "next": {},
+      "dict": {}
+    },
+    "expect": "unwanted property dict as next provided"
+  },
+
+  {
+    "name": "exp list unwanted for value",
+    "exp": {
+      "value": "",
+      "list": {}
+    },
+    "expect": "unwanted property list as value provided"
+  },
+  {
+    "name": "exp list unwanted for next",
+    "exp": {
+      "next": {},
+      "list": {}
+    },
+    "expect": "unwanted property list as next provided"
+  },
+  {
+    "name": "exp value unwanted for next",
+    "exp": {
+      "next": {},
+      "value": ""
+    },
+    "expect": "unwanted property value as next provided"
+  }
+]

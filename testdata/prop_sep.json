@@ -1,0 +1,76 @@
+[
+  {
+    "name": "sep undefined",
+    "exp": {
+      "list": {}
+    },
+    "expect": [""]
+  },
+  {
+    "name": "sep null",
+    "exp": {
+      "list": {
+        "sep": null
+      }
+    },
+    "expect": "must be a string or array\n.list.sep"
+  },
+  {
+    "name": "sep empty",
+    "exp": {
+      "list": {
+        "sep": ""
+      }
+    },
+    "input": "abc",
+    "expect": ["abc"]
+  },
+  {
+    "name": "sep array empty",
+    "exp": {
+      "list": {
+        "sep": [""]
+      }
+    },
+    "input": "abc",
+    "expect": ["abc"]
+  },
+  {
+    "name": "sep invalid",
+    "exp": {
+      "list": {
+        "sep": 1
+      }
+    },
+    "expect": "must be a string or array\n.list.sep"
+  },
+  {
+    "name": "sep array invalid",
+    "exp": {
+      "list": {
+        "sep": [1]
+      }
+    },
+    "expect": "must be a string\n.list.sep[0]"
+  },
+  {
+    "name": "sep ok",
+    "exp": {
+      "list": {
+        "sep": "b"
+      }
+    },
+    "input": "abc",
+    "expect": ["a", "c"]
+  },
+  {
+    "name": "sep array ok",
+    "exp": {
+      "list": {
+        "sep": ["b", "a"]
+      }
+    },
+    "input": "abc",
+    "expect": ["", "", "c"]
+  }
+]
