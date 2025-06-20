@@ -1,6 +1,9 @@
 package dx
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 // ********************************************************************
 // ( "sep":  string | [string]  )?
@@ -71,6 +74,7 @@ func (p *valueList) extract(input string) (any, *errloc) {
 	for _, sub := range subs {
 		if p.item != nil {
 			if r, err := p.item.extract(sub); err != nil {
+				err.msg = append(err.msg, "@list("+strconv.Itoa(len(list))+") "+sub)
 				return nil, err
 			} else {
 				list = append(list, r)
